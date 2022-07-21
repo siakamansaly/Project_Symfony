@@ -1,12 +1,12 @@
 {% import '/macro/form.html.twig' as form %}
 {% import '/macro/admin.html.twig' as admin %}
-{% extends "layout.html.twig" %}
+{% extends "base.html.twig" %}
 {% block navbar %}
 {% set urlblog = "/" %}
 {% set url = "/" %}
 {{ parent() }}
 {% endblock %}
-{% block content %}
+{% block body %}
 
 <header id="adminBlog" class="page-section hero_postManager border-bottom mb-4">
   <div class="container">

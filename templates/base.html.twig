@@ -1,19 +1,35 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<html lang="fr">
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+<head>
+    <title>{% block title %}Siaka MANSALY{% endblock %}</title>
+    {% block head %}
+    <meta name="author" content="Siaka MANSALY" />
+    <meta name="description" content="Blog professionnel" />
+    {% endblock %}
+    {% include "/core/head.html.twig" %}
+</head>
+
+<body id="page-top" class="index">
+    {% block navbar %}{% include "/core/navbar.html.twig" %}{% endblock %}
+
+
+    {% block body %}{% endblock %}
+
+    <footer class="footer text-center">
+        {% block footer %}{% include "/core/footer.html.twig" %}{% endblock %}
+    </footer>
+
+    {% include "/core/login.html.twig" %}
+
+    {% include "/core/register.html.twig" %}
+
+    {% include "/core/lostpassword.html.twig" %}
+
+    <div class="scroll-top px-3 py-2 bg-primary rounded">
+        <i class="fas fa-chevron-up fa-2x text-secondary"></i>
+    </div>
+
+</body>
+
 </html>

@@ -1,7 +1,7 @@
 {% import '/macro/section.html.twig' as section %}
-{% extends "layout.html.twig" %}
+{% extends "base.html.twig" %}
 {% block navbar %}{% set urlblog = "/" %}{% set url = "/" %} {{ parent() }}{% endblock %}
-{% block content %}
+{% block body %}
 
 {{section.sectionstart("Mentions légales",{id:'legalnotice'})}}
 <!-- Legal Notice Section Content-->

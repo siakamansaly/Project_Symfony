@@ -3,13 +3,13 @@
 {% if sidebar == true %}
 {% import '/macro/admin.html.twig' as admin %}
 {% endif %}
-{% extends "layout.html.twig" %}
+{% extends "base.html.twig" %}
 {% block navbar %}{% set urlblog = "" %}{% set url = "/" %} {{ parent() }}{% endblock %}
 {% block head %}
 <meta name="author" content="{{post.firstName|capitalize ~ " " ~ post.lastName|capitalize | default('Anonyme')}}" />
 <meta name="description" content="{{post.chapo}}" />
 {% endblock %}
-{% block content %}
+{% block body %}
 <div id="blog" class="page-section container text-primary">
     <div class="row">
         <div class="col-lg-8 px-5">
