@@ -1,7 +1,7 @@
 {% import '/macro/section.html.twig' as section %}
-{% extends "layout.html.twig" %}
+{% extends "base.html.twig" %}
 {% block navbar %}{% set urlblog = "/" %}{% set url = "/" %} {{ parent() }}{% endblock %}
-{% block content %}
+{% block body %}
 {{section.sectionstart(error.code,{color:"error text-primary", heading:"false"})}}
 <p class="h3 text-primary text-center">{{error.message}}</p>
 <!-- 404 Section Button-->

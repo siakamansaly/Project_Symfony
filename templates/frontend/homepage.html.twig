@@ -1,6 +1,6 @@
-{% extends "layout.html.twig" %}
+{% extends "base.html.twig" %}
 {% block navbar %}{% set urlblog = "" %}{% set url = "" %}{% set urlManager = "adminBlog" %} {{ parent() }}{% endblock %}
-{% block content %}
+{% block body %}
 {% include "/core/header.html.twig" %}
 {% include "/core/experience.html.twig" %}
 {% include "/core/skills.html.twig" %}
