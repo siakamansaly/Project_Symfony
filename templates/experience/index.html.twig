@@ -1,0 +1,45 @@
+{% import '/macro/section.html.twig' as section %}
+{% extends 'base.html.twig' %}
+{% block title %}Experience{% endblock %}
+{% block body %}
+{{section.sectionstartDefault("Expériences")}}
+<table class="table text-primary">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Society</th>
+            <th>DateStart</th>
+            <th>DateEnd</th>
+            <th>City</th>
+            <th>Formation</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for experience in experiences %}
+        <tr>
+            <td>{{ experience.id }}</td>
+            <td>{{ experience.title|slice(0, 30) ~ "..." }}</td>
+            <td>{{ experience.society }}</td>
+            <td>{{ experience.dateStart ? experience.dateStart|date('Y-m-d') : '' }}</td>
+            <td>{{ experience.dateEnd ? experience.dateEnd|date('Y-m-d') : '' }}</td>
+            <td>{{ experience.city }}</td>
+            <td>{{ experience.formation }}</td>
+            <td>
+                <a href="{{ path('app_experience_show', {'id': experience.id}) }}" class="btn btn-outline-primary">Show</a>
+                <a href="{{ path('app_experience_edit', {'id': experience.id}) }}" class="btn btn-secondary">Edit</a>
+                {{ include('experience/_delete_form.html.twig') }}
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="8">No records found</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ path('app_experience_new') }}" class="btn btn-primary">Create new</a>
+{{section.sectionend()}}
+{% endblock %}
