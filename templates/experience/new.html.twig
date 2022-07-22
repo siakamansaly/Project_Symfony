@@ -1,0 +1,16 @@
+{% import '/macro/section.html.twig' as section %}
+{% extends 'base.html.twig' %}
+
+{% block title %}New Experience{% endblock %}
+
+{% block body %}
+{{section.sectionstartDefault("Create new Experience")}}
+
+    {{ include('experience/_form.html.twig') }}
+
+    <a href="{{ path('app_experience_index') }}" class="btn btn-outline-primary">Back to list</a>
+
+
+    {{section.sectionend()}}
+{% endblock %}
+

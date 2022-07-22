@@ -1,0 +1,73 @@
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+<div class="container ">
+    <div class="row d-flex justify-content-evenly mb-2" >
+        <div class="col-md-12 col-lg-6">
+            {{ form_start(form) }}
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-12">
+                        {{ form_row(form.title) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        {{ form_row(form.society) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        {{ form_row(form.context) }}
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-6">
+                    {{ form_row(form.dateStart) }}
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    {{ form_row(form.dateEnd) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-lg-6">
+                    {{ form_row(form.city) }}
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    {{ form_row(form.formation) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+
+
+                    <!--Add details-->
+                    <div class="h4 mb-3 border border-primary text-center p-2">Details</div>
+                    <div class="mb-3"><button type="button"
+                            class="btn btn-outline-primary  add-another-collection-widget text-center"
+                            data-list-selector="#details-fields-list">Add detail</button></div>
+
+                    <ul id="details-fields-list" class="px-3"
+                        data-prototype="{{ form_widget(form.experienceDetails.vars.prototype)|e }}"
+                        data-widget-tags="{{ '<div></div>'|e }}"
+                        data-widget-counter="{{ form.experienceDetails|length }}">
+                        {% for detail in form.experienceDetails %}
+                        <div class="row d-flex align-items-center">
+                            {{ form_errors(detail) }}
+                            <div class='col-sm-2 d-inline'><button type='button' class='btn btn-danger btn-xs'
+                                    onclick='removeFile($(this));'><i class='fa fa-times'
+                                        aria-hidden='true'></i></button></div>
+                            <div class='col'>{{ form_widget(detail) }}</div>
+                        </div>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            
+
+            <button class="btn {{ button_class|default('btn-primary') }}">{{ button_label|default('Save') }}</button>
+            {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
