@@ -1,5 +1,7 @@
 {
+    "name": "siaka/myblog",
     "type": "project",
+    "description": "My first project",
     "license": "proprietary",
     "minimum-stability": "stable",
     "prefer-stable": true,
