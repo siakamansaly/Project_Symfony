@@ -1,0 +1,41 @@
+{% import '/macro/section.html.twig' as section %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Skill{% endblock %}
+
+{% block body %}
+{{section.sectionstartDefault("Skill")}}
+
+    <table class="table container">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ skill.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ skill.title }}</td>
+            </tr>
+            <tr>
+                <th>Stars</th>
+                <td>{{ skill.stars }}</td>
+            </tr>
+            <tr>
+                <th>Group</th>
+                <td>{{ skill.category.title }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row d-flex justify-content-evenly text-center">
+        <div class="col">
+    <a href="{{ path('app_skill_index') }}" class="btn btn-outline-primary">back to list</a>
+</div>
+<div class="col">
+    <a href="{{ path('app_skill_edit', {'id': skill.id}) }}" class="btn btn-secondary">edit</a>
+</div>
+<div class="col">
+    {{ include('skill/_delete_form.html.twig') }}
+</div>
+</div>
+
+{% endblock %}
