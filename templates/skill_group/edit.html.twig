@@ -1,0 +1,15 @@
+{% import '/macro/section.html.twig' as section %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Skill Group{% endblock %}
+
+{% block body %}
+{{section.sectionstartDefault("Edit Skill Group")}}
+
+    {{ include('skill_group/_form.html.twig', {'button_label': 'Update', 'button_class':'btn-secondary'}) }}
+
+    <a href="{{ path('app_skill_group_index') }}" class="btn btn-outline-primary">back to list</a>
+
+    {{section.sectionend()}}
+{% endblock %}
+

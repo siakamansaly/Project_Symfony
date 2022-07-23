@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Test\Controller;
+namespace App\Tests\Functional\Controller;
 
 use App\Entity\Experience;
 use App\Entity\ExperienceDetails;

@@ -1,0 +1,42 @@
+{% import '/macro/section.html.twig' as section %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Skill{% endblock %}
+
+{% block body %}
+{{section.sectionstartDefault("Skill")}}
+
+    <table class="table container">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Stars</th>
+                <th>Group</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for skill in skills %}
+            <tr>
+                <td>{{ skill.id }}</td>
+                <td>{{ skill.title|raw }}</td>
+                <td>{{ skill.stars }}</td>
+                <td>{{ skill.category.title }}</td>
+                <td>
+                    <a href="{{ path('app_skill_show', {'id': skill.id}) }}" class="btn btn-outline-primary">show</a>
+                    <a href="{{ path('app_skill_edit', {'id': skill.id}) }}" class="btn btn-secondary">edit</a>
+                    {{ include('skill/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_skill_new') }}" class="btn btn-primary">Create new</a>
+    {{section.sectionend()}}
+{% endblock %}
