@@ -17,15 +17,8 @@ class FileUploader
 
     public function upload(UploadedFile $file, string $target = 'cover')
     {
-        switch ($target) {
-            case 'cover':
-                $targetPath = $this->getTargetCover();
-                break;
-            default:
-                $targetPath = $this->getTargetCover();
-                break;
-        }
-
+        $targetPath = $this->getTargetCover();
+                
         $target = $target.'-'.date("Ymd-His");
         $fileName = $target . '-' . uniqid() . '.' . $file->guessExtension();
 
@@ -40,14 +33,7 @@ class FileUploader
 
     public function remove(string $fileName, string $target = 'cover')
     {
-        switch ($target) {
-            case 'cover':
-                $targetPath = $this->getTargetCover();
-                break;
-            default:
-                $targetPath = $this->getTargetCover();
-                break;
-        }
+        $targetPath = $this->getTargetCover();
 
         $filesystemEdit = new Filesystem();
         $filesystemEdit->remove($targetPath . '/' . $fileName);
