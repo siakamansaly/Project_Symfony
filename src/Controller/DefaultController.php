@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Experience;
+use App\Entity\Portfolio;
 use App\Entity\Skill;
 use App\Entity\SkillGroup;
 use Doctrine\ORM\EntityManager;
@@ -31,6 +32,7 @@ class DefaultController extends AbstractController
         $otherSkills = $this->entityManager->getRepository(SkillGroup::class)->findBy(['organization' => 'OtherSkills']);
         $environments = $this->entityManager->getRepository(SkillGroup::class)->findBy(['organization' => 'Environment']);
         $experiences = $this->entityManager->getRepository(Experience::class)->findAll(['dateStart' => 'DESC']);
-        return $this->render('frontend/homepage.html.twig', ['posts' => $posts, 'experiences' => $experiences, 'hardSkills' => $hardSkills, 'softSkills' => $softSkills, 'otherSkills' => $otherSkills, 'environments' => $environments]);
+        $portfolios = $this->entityManager->getRepository(Portfolio::class)->findBy([], ['createdAt' => 'DESC']);
+        return $this->render('frontend/homepage.html.twig', ['posts' => $posts, 'experiences' => $experiences, 'hardSkills' => $hardSkills, 'softSkills' => $softSkills, 'otherSkills' => $otherSkills, 'environments' => $environments, 'portfolios' => $portfolios]);
     }
 }

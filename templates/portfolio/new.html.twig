@@ -1,0 +1,13 @@
+{% import '/macro/section.html.twig' as section %}
+{% extends 'base.html.twig' %}
+
+{% block title %}New Portfolio{% endblock %}
+
+{% block body %}
+{{section.sectionstartDefault("New Portfolio")}}
+
+    {{ include('portfolio/_form.html.twig') }}
+
+    <a href="{{ path('app_portfolio_index') }}" class="btn btn-outline-primary">back to list</a>
+    {{section.sectionend()}}
+{% endblock %}
