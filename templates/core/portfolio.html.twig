@@ -4,48 +4,66 @@ portfolio',color:'text-white',dividerColor:'divider-light', divider:'fa fa-brief
 <!-- Portfolio Grid Items-->
 <div class="row justify-content-center mt-5 SlidInBottomAnimation">
 
-    {{ section.portfolio("Films de Plein Air","portfolioModal1", "/img/portfolio/films_plein_air.png") }}
-    {{ section.portfolio("Express Food","portfolioModal2", "/img/portfolio/express_food.png") }}
-    {{ section.portfolio("Chalets Caviar","portfolioModal3", "/img/portfolio/chalets_caviar.png") }}
-    {{ section.portfolio("Banana Design","portfolioModal4", "/img/portfolio/banana_design.png") }}
-    {{ section.portfolio("FitActive","portfolioModal5", "/img/portfolio/fitactive.png") }}
+    {% for portfolio in portfolios %}
+    <!-- Portfolio {{portfolio.title}}-->
+    <div class="col-md-6 col-lg-4 mb-5 ">
+        <div class="portfolio-item mx-auto" data-bs-toggle="modal"
+            data-bs-target="#{{'portfolioModal' ~ portfolio.id}}">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white"><i
+                        class="fas fa-search-plus fa-3x"></i>
+                </div>
+            </div>
+            <img class="img-fluid" src="{{ asset('/assets/covers/') }}{{portfolio.cover}}" alt="{{portfolio.title}}" />
+        </div>
+    </div>
+
+    
+    {% endfor %}
 
 </div>
 
-<!-- Portfolio Modals-->
-{{ section.portfolioModal("Les Films de Plein Air (Maquette)","portfolioModal1",
-"/img/portfolio/films_plein_air.png", "Maquette pour l'association Films de Plein Air<br />Le but de ce projet
-étant d'analyser les besoins du client et de réaliser un cahier des charges ainsi q'une maquette.<br />Maquette réalisée
-en HTML/CSS et implémentée avec Bootstrap 5 et SASS.",{buttonSrc:"https://filmpleinair.s-mansaly.fr/",buttonLabel:"Voir
-la maquette"}) }}
-
-{{ section.portfolioModal("Express Food (Conception UML)","portfolioModal2", "/img/portfolio/express_food.png",
-"Conception solution technique d'une application de restauration en ligne<br />Le but de ce projet étant de modéliser
-les besoins du client de manière structurée grâce à des diagrammes UML, et de concevoir la base de données SQL de
-l'application.<br /> Diagrammes UML réalisés : Diagrammes de cas d'utilisation, Diagrammes de séquences, Diagramme de
-classes.<br /> Autres réalisations : Modèle Physique de données, Base de données avec son jeu de données.<br />
-Plateformes utilisées : Diagrams.net, MySQL Workbench et WAMP
-Server.",{buttonSrc:"https://github.com/siakamansaly/Conception_UML_SQL",buttonLabel:"Voir Diagrammes UML"}) }}
-
-{{ section.portfolioModal("Chalets et caviar (Integration WordPress)","portfolioModal3",
-"/img/portfolio/chalets_caviar.png", "Intégrer un thème Wordpress pour l'agence immobilière \"Chalets et caviar\"
-spécialisé dans la vente et la location de chalets de luxe<br />Le but de ce projet étant de sélectionner et d'adapter
-un thème Wordpress pour respecter les besoins et les exigences du client, de rédiger une <a
-    href='https://github.com/siakamansaly/P2-OCR-CC/blob/master/PCHALET_03_notice.pdf' target='_blank'
-    rel='noopener'>documentation</a> à l'intention d'utilisateurs non spécialistes.<br /> Spécificités : Thème Wordpress
-personnalisé avec un design clair et épuré, qui montre la ligne luxe de l’agence. Système d'administration des chalets
-(ajout, suppression et modification de chalets)",{buttonSrc:"https://chaletscaviar.s-mansaly.fr",buttonLabel:"Voir le
-site"}) }}
-
-{{ section.portfolioModal("Banana Design (Integration WordPress)","portfolioModal4",
-"/img/portfolio/banana_design.png", "Intégrer un thème Wordpress pour l'agence Web Design \"Banana
-Design\"<br />Le but de ce projet était de créer un site moderne et professionnel pour une agence Web
-Design.",{buttonSrc:"https://banana-design.s-mansaly.fr/",buttonLabel:"Voir le site"}) }}
-
-{{ section.portfolioModal("Fit Active (Integration WordPress)","portfolioModal5", "./img/portfolio/fitactive.png",
-"Intégrer un thème Wordpress pour le club de sport \"Fit Active\"<br /> Le but de ce projet étant de créer un site
-vitrine pour le club de sport \"Fit Active\". Ce site vitrine est destiné à promouvoir le club sur Internet et à
-communiquer sur ses actualités et événements.",{buttonSrc:"https://fitactive.s-mansaly.fr/",buttonLabel:"Voir le site"})
-}}
+{% for portfolio in portfolios %}
+<!-- Portfolio Modal {{portfolio.title}}-->
+<div class="portfolio-modal modal fade" id="{{'portfolioModal' ~ portfolio.id}}" tabindex="-1" aria-labelledby="{{'portfolioModal' ~ portfolio.id}}"
+aria-hidden="true">
+<div class="modal-dialog modal-xl">
+    <div class="modal-content">
+        <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                aria-label="Close"></button></div>
+        <div class="modal-body text-center pb-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <!-- Portfolio Modal - Title-->
+                        <h3 class="h2 portfolio-modal-title text-secondary text-uppercase mb-0">{{portfolio.title}}</h3>
+                        <!-- Icon Divider-->
+                        <div class="divider-custom">
+                            <div class="divider-custom-line"></div>
+                            <div class="divider-custom-icon"><i class="fas fa-briefcase"></i></div>
+                            <div class="divider-custom-line"></div>
+                        </div>
+                        <!-- Portfolio Modal - Image-->
+                        <img class="img-fluid rounded mb-5" src="{{ asset('/assets/covers/') }}{{portfolio.cover}}" alt="{{portfolio.title}}" />
+                        <!-- Portfolio Modal - Text-->
+                        <p class="mb-4">{{portfolio.content|raw}}</p>
+                        <div class="row">
+                            <div class="col">
+                                <a href="{{portfolio.link}}" target="_blank" rel="noopener" role="button"
+                                    class="btn btn-primary btn-block">Visualiser</a>
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-outline-primary" data-bs-dismiss="modal"><i
+                                        class="fas fa-times fa-fw"></i>Fermer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endfor %}
 
 {{section.sectionend()}}
